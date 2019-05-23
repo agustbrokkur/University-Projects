@@ -1,0 +1,8 @@
+ID          name        record    
+----------  ----------  ----------
+0           High Jump   2.11      
+1           Long Jump   6.78      
+2           Triple Jum  13.15     
+3           Shot Put    16.66     
+4           Javelin     60.46     
+5           Discus      40.33     

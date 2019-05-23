@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1475751777 source:c:\hr\h16\verkefnalausnir\rescue robot\problem e\problem e.cpp
+	<iostream>
+	<cstdio>
+

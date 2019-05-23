@@ -1,0 +1,8 @@
+name        record    
+----------  ----------
+Discus      40.33     
+High Jump   2.11      
+Javelin     60.46     
+Long Jump   6.78      
+Shot Put    16.66     
+Triple Jum  13.15     

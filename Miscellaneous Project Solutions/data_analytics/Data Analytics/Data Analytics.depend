@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1477323478 source:c:\hr\h16\verkefnalausnir\data_analytics\data analytics\classify.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<iomanip>
+	<vector>
+

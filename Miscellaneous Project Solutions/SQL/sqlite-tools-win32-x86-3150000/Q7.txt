@@ -1,0 +1,17 @@
+name           gender    
+-------------  ----------
+Karl Karlsson  M         
+Karl Janussso  M         
+Karl Karlsson  M         
+Karl Benedikt  M         
+Karl Bergvins  M         
+Karl Sigurgei  M         
+Karl Jansson   M         
+Karl Karlsson  M         
+Karl Benedikt  M         
+Karl Janussso  M         
+Karl Arnarsso  M         
+Karl Benedikt  M         
+Karl Arnarsso  M         
+Karl Finngeir  M         
+Karl Geirsson  M         

@@ -1,0 +1,119 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[icelandic]{babel}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+% To use the whole A4-page
+% See: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/geometry/geometry.pdf
+% and http://en.wikibooks.org/wiki/LaTeX/Document_Structure
+\usepackage{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% SETUP %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set the margins of the paper. By default LaTeX uses huge margins
+\geometry{includeheadfoot, margin=2.5cm}
+% you can also use
+% \geometry{a4paper}
+% End of margins setup
+
+% Setup Problem/Solution environments
+\theoremstyle{plain}
+\newtheorem{problem}{Dæmi}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Lausn}
+% End of setup of Problem/Solution environments
+
+%%%%%%%%%%%%%%%%%%%%%%%% END OF SETUP %%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\title{Rafrænt verkefni 1}
+\author{Jane Doe \and John Doe} 
+\date{\today}
+\maketitle
+
+\section{Inngangur}
+    Forritunar- og setningarmálið TeX var þróað af Donald Knuth á árunum 1978-1989, eftir að hann sá próförk af annari útgáfu bókar sinnar The Art of Computer Programming og blöskraði útlitið á henni.
+
+    Svo er um að gera að hafa aðra efnisgrein í inngangnum, svo að ég geti gengið úr skugga um að þið kunnið að skipta textanum í efnisgreinar.
+
+\section{Listar og töflur}
+    Það sem þarf að hafa hugfast við lausn verkefnisins er að
+         
+\begin{itemize}
+\item Google er vinur ykkar,
+\item          Wiki-bókin um LaTeX er einstaklega góð,
+\item          það er um að gera að prófa sig áfram,
+\item          gera litlar breytingar í einu og þýða skjalið alltaf á milli (þá verður auðveldara að finna villur)
+\end{itemize}
+.
+    Til að leysa verkefnið þarf að fylgja eftirfarandi skrefum:
+       
+\begin{enumerate}
+\item  Mæta í skólann.
+\item  Leysa verkefnið, en það felur í sér að:
+\begin{enumerate}
+\item Opna tölvuna,
+\item Læra á LaTeX
+\end{enumerate}
+\item Skila verkefninu.
+\end{enumerate}
+
+    Eins og sjá má í Töflu ?, þá er einfalt að setja fram mjög mikilvægar upplýsingar í töflu.
+
+\section{Myndir}
+    Eins og lesa mátti í kafla ?, þá er um að gera að nýta sér Wiki-bókina til að komast að því hvernig maður setur myndir, eins og til dæmis Mynd ?, inn í skjalið.
+\begin{tabular}{l*{6}{c}r}
+            Dálkur 1  Dálkur 2  Dálkur 3  Dálkur 4
+            \hline
+            Röð 1 & stutt & stutt & miðungs \\
+            Röð 2 & rosalega langt & miðlungs & rosalega langt \\
+            Röð 3 & miðlungs & rosalega langt & stutt \\
+            \hline
+            \end{tabular}
+
+\section{Jöfnur og formúlur}
+    Jöfnur og stæður, eins og t.d. x eða x2 + 2 = 3, er hægt að rita inni í texta. Ef formúlur er langar, þá er hægt að setja þér í sér línu. Til dæmis er formúlan
+
+        %formula
+
+    frekar löng, og er sett í sér línu.
+
+\section{Kóði}
+    Við getum skrifað stutta kóðabúta inni í texta, eins og t.d. int x = 3 og reader(). Þar að auki getum við sett inn heilu C++ forritin, eins og Forrit ? sýnir.
+
+typedef int semaphore;
+semaphore mutex1 = 1, mutex2 = 1, mutex3 = 1;
+semaphore dbr = 1, dbw = 1;
+int rc = 0, wc = 0;
+
+void reader(void)
+{
+    while(true)
+    {
+        down(mutex3);
+        down(dbr);
+        down(mutex1);
+        rc += 1;
+        if (rc == 1) down(dbw);
+        up(mutex1);
+        up(dbr);
+        up(mutex3);
+
+        readDatabase();
+
+        down(mutex1);
+        rc -= 1;
+        if (rc == 0) up(dbw);
+        up(mutex1);
+        useDataRead();
+    }
+}
+
+\section{Reiknirit}
+    Til að finna stystu leið frá einum hnút, til allra hinna hnútanna í gefnu neti, er hægt að nota Reiknirit ?.
+
+\end{document}

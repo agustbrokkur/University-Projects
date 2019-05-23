@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1476042660 source:c:\hr\h16\verkefnalausnir\rescue robot\chess players\chess players.cpp
+	<iostream>
+	<vector>
+	<string>
+	<algorithm>
+
+1476045072 source:c:\hr\h16\forritun\verk\chess players\chess players.cpp
+	<iostream>
+	<vector>
+	<string>
+	<algorithm>
+

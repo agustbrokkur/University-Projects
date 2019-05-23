@@ -1,0 +1,8 @@
+name      
+----------
+Discus    
+High Jump 
+Javelin   
+Long Jump 
+Shot Put  
+Triple Jum

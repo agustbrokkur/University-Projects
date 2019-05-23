@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1477263795 source:c:\hr\h16\forritun\verk\sales\sales.cpp
+	<iostream>
+	<vector>
+	<fstream>
+	<string>
+

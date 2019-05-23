@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1473932656 source:c:\hr\h16\verkefnalausnir\verkefni\automata\problem a\problem c\problem c.cpp
+	<iostream>
+	<cstring>
+	<cstdio>
+

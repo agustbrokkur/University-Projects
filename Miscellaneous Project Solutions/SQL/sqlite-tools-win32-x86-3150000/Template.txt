@@ -1,0 +1,195 @@
+.mode column
+.header on
+
+.once Q0.txt
+
+SELECT *
+FROM Sports;
+
+.once Q1.txt
+
+SELECT *
+FROM People
+WHERE name = "Karl Finngeirsson";
+
+.once Q2.txt
+
+SELECT name, record
+FROM Sports
+Order BY name;
+
+.once Q3.txt
+
+SELECT name, height
+FROM People
+WHERE gender = "M" AND height < 1.73
+ORDER BY height;
+
+.once Q4.txt
+
+SELECT *
+FROM Results
+WHERE sportID = 4
+ORDER BY result DESC
+LIMIT 10;
+
+.once Q5.txt
+
+SELECT ID, held
+FROM Competitions
+WHERE place = "Akureyri" AND held BETWEEN '2008-12-31' AND '2010-01-01';
+
+.once Q6.txt
+
+SELECT *
+FROM COMPETITIONS
+WHERE held LIKE '_____06___';
+
+.once Q7.txt
+
+SELECT name, gender
+FROM People
+WHERE name like "Karl%";
+
+.once Q8.txt
+
+SELECT name, gender
+FROM People
+WHERE name LIKE "% %geir%" OR name LIKE "% %Geir%";
+
+.once Q9.txt
+
+SELECT P.name, C.place, C.held, R.result
+FROM People P
+JOIN Results R on P.ID = R.peopleID
+JOIN Competitions C on C.ID = R.competitionID
+WHERE R.sportID = 4;
+
+.once Q10.txt
+
+SELECT DISTINCT name
+FROM Sports
+ORDER BY name;
+
+.once Q11.txt
+
+SELECT P.ID, P.name, P.gender
+FROM People P
+JOIN Results R on P.ID = R.peopleID
+JOIN Competitions C on C.ID = R.competitionID
+WHERE C.place = "Selfoss" AND C.held like '2009-%%-%%';
+
+.once Q12.txt
+
+Select DISTINCT P.ID, P.name, P.gender
+FROM People P
+JOIN Results R on P.ID = R.peopleID
+JOIN Sports S on S.ID = R.sportID
+WHERE R.result = S.record;
+
+.once Q13.txt
+
+SELECT AVG(height)
+FROM People
+WHERE gender = "F";
+
+.once Q14.txt
+
+SELECT MIN(result) AS low, AVG(result) AS average, MAX(result) AS high
+FROM Results
+where sportID = 0;
+
+.once Q15.txt
+
+SELECT COUNT(DISTINCT peopleID)
+FROM Results
+WHERE sportID = 0;
+
+.once Q16.txt
+SELECT AVG(R.result)
+FROM Results R
+JOIN People P on P.ID = R.peopleID
+WHERE R.sportID = 4 AND P.name like "Geir%";
+
+.once Q17.txt
+
+SELECT gender, AVG(height)
+FROM People
+GROUP BY gender;
+
+.once Q18.txt
+
+SELECT 18 AS QUERY;
+
+.once Q19.txt
+
+SELECT 19 AS QUERY;
+
+.once Q20.txt
+
+SELECT 20 AS QUERY;
+
+.once Q21.txt
+
+SELECT 21 AS QUERY;
+
+.once Q22.txt
+
+SELECT 22 AS QUERY;
+
+.once Q23.txt
+
+SELECT 23 AS QUERY;
+
+.once Q24.txt
+
+SELECT 24 AS QUERY;
+
+.once Q25.txt
+
+SELECT 25 AS QUERY;
+
+.once Q26.txt
+
+SELECT 26 AS QUERY;
+
+.once Q27.txt
+
+SELECT 27 AS QUERY;
+
+.once Q28.txt
+
+SELECT 28 AS QUERY;
+
+.once Q29.txt
+
+SELECT 29 AS QUERY;
+
+.once Q30.txt
+
+SELECT 30 AS QUERY;
+
+.once Q31.txt
+
+SELECT 31 AS QUERY;
+
+.once Q32.txt
+
+SELECT 32 AS QUERY;
+
+.once Q33.txt
+
+SELECT 33 AS QUERY;
+
+.once Q34.txt
+
+SELECT 34 AS QUERY;
+
+.once Q35.txt
+
+SELECT 35 AS QUERY;
+
+.once Q36.txt
+
+SELECT 36 AS QUERY;
+

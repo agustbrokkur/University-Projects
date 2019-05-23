@@ -1,0 +1,9 @@
+ID          name           gender    
+----------  -------------  ----------
+11          Geir Geirsson  M         
+32          Greta Huldudo  F         
+160         Jana Karlsdot  F         
+154         Eva Jansdotti  F         
+29          Finngeir Janu  M         
+91          Gunnar Januss  M         
+200         Björn Þór   M         

@@ -1,0 +1,9 @@
+name                 height    
+-------------------  ----------
+Janus Sigurgeirsson  1.7       
+Karl Karlsson        1.7       
+Bergvin Jansson      1.7       
+Karl Arnarsson       1.7       
+Jan Sigurgeirsson    1.71      
+Gunnar Janussson     1.71      
+Janus Arnarsson      1.71      

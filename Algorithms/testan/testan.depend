@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1478191332 source:c:\hr\h16\forritun\verk\testan\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1479092113 source:c:\hr\h16\forritun\verk\time\main.cpp
+	"MyTime.h"
+	<iostream>
+
+1479092142 c:\hr\h16\forritun\verk\time\mytime.h
+	<iostream>
+
+1479092126 source:c:\hr\h16\forritun\verk\time\mytime.cpp
+	"MyTime.h"
+
