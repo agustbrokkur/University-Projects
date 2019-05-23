@@ -1,0 +1,39 @@
+#header 
+{
+	color: blue;
+}
+
+/*Position content in center of box*/
+.slot
+{
+	position: absolute;
+       	left: 45%;
+	top: 25%;
+	font-size: 400%;
+}
+
+/*Create border line and box height*/
+.box
+{
+	height: 200px;
+	border-style: solid;
+	text-align: center;
+}
+
+/*Create space from top of site and game board*/
+.game-board
+{
+	margin-top: 40px;
+}
+
+/*Create blank space above new game button*/
+#new-game
+{
+	margin-top: 30px;
+}
+
+/*Make content appear in middle of div on site header*/
+.site-header
+{
+	text-align: center;
+}

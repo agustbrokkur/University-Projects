@@ -1,0 +1,14 @@
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\bin\Debug\netstandard2.0\ROT.Services.deps.json
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\bin\Debug\netstandard2.0\ROT.Services.dll
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\bin\Debug\netstandard2.0\ROT.Services.pdb
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\bin\Debug\netstandard2.0\ROT.Models.dll
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\bin\Debug\netstandard2.0\ROT.Repositories.dll
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\bin\Debug\netstandard2.0\ROT.Models.pdb
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\bin\Debug\netstandard2.0\ROT.Repositories.pdb
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\obj\Debug\netstandard2.0\ROT.Services.csprojAssemblyReference.cache
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\obj\Debug\netstandard2.0\ROT.Services.csproj.CoreCompileInputs.cache
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\obj\Debug\netstandard2.0\ROT.Services.AssemblyInfoInputs.cache
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\obj\Debug\netstandard2.0\ROT.Services.AssemblyInfo.cs
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\obj\Debug\netstandard2.0\ROT.Services.csproj.CopyComplete
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\obj\Debug\netstandard2.0\ROT.Services.dll
+C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Services\obj\Debug\netstandard2.0\ROT.Services.pdb

@@ -1,0 +1,13 @@
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\obj\Debug\netstandard2.0\Exterminator.Services.csprojResolveAssemblyReference.cache
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\obj\Debug\netstandard2.0\Exterminator.Services.csproj.CoreCompileInputs.cache
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\obj\Debug\netstandard2.0\Exterminator.Services.AssemblyInfoInputs.cache
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\obj\Debug\netstandard2.0\Exterminator.Services.AssemblyInfo.cs
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\bin\Debug\netstandard2.0\Exterminator.Services.deps.json
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\bin\Debug\netstandard2.0\Exterminator.Services.dll
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\bin\Debug\netstandard2.0\Exterminator.Services.pdb
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\bin\Debug\netstandard2.0\Exterminator.Models.dll
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\bin\Debug\netstandard2.0\Exterminator.Repositories.dll
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\bin\Debug\netstandard2.0\Exterminator.Models.pdb
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\bin\Debug\netstandard2.0\Exterminator.Repositories.pdb
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\obj\Debug\netstandard2.0\Exterminator.Services.dll
+C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Services\obj\Debug\netstandard2.0\Exterminator.Services.pdb

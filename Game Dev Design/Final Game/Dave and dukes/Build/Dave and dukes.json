@@ -1,0 +1,13 @@
+{
+"companyName": "DefaultCompany",
+"productName": "Duke's and Dave's Battles for Braves",
+"dataUrl": "Dave and dukes.data.unityweb",
+"asmCodeUrl": "Dave and dukes.asm.code.unityweb",
+"asmMemoryUrl": "Dave and dukes.asm.memory.unityweb",
+"asmFrameworkUrl": "Dave and dukes.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}

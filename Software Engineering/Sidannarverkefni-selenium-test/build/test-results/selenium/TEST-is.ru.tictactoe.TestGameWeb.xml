@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="is.ru.tictactoe.TestGameWeb" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-28T04:31:42" hostname="DESKTOP-PLBUN9I" time="2.393">
+  <properties/>
+  <testcase name="testTitleMatches" classname="is.ru.tictactoe.TestGameWeb" time="2.393"/>
+  <testcase name="testSimpleAdd" classname="is.ru.tictactoe.TestGameWeb" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 2.33.506120 (e3e53437346286c0bc2d2dc9aa4915ba81d9023f) on port 2630
+Only local connections are allowed.
+Oct 28, 2017 4:31:42 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+]]></system-err>
+</testsuite>

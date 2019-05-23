@@ -1,0 +1,25 @@
+% myMember(X, [X,Xs]).
+% myMember(X, [_|Xs]) :- myMember(X, Xs).
+
+% (i)
+myMember(X, [X|Xs]).
+myMember(X, [_|Xs]) :- myMember(X, Xs).
+
+% (ii)
+occursN(_, 0, _).
+occursN(X, N, [Y|Xs]) :- N \= 0, X \== Y, occursN(X, N, Xs).
+occursN(X, N, [X|Xs]) :- N \= 0, M is N-1, occursN(X, M, Xs).
+
+% (i)
+removeFirst(X, [], []).
+removeFirst(X, [X|Xs], Xs).
+removeFirst(X, [Z|Xs], [Z|Ys]) :- X \== Z, removeFirst(X, Xs, Ys).
+
+% (ii)
+remove(X, [], []).
+remove(X, [Z|Xs], [Z|Ys]) :- X \== Z, remove(X, Xs, Ys).
+remove(X, [X|Xs], Ys) :- remove(X, Xs, Ys).
+
+% (iii)
+nub([], []).
+nub([X|Xs],[X|Zs]) :- remove(X, Xs, Ys), nub(Ys, Zs).

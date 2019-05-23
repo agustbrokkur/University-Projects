@@ -1,0 +1,26 @@
+package d3;
+
+import edu.princeton.cs.algs4.StdOut;
+
+public class NonRecursivePut {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BST<String, Integer> thing = new BST<String, Integer>();
+		thing.put("First", 1);
+		thing.put("Second", 2);
+		thing.put("Third", 3);
+		thing.put("Fourth", 4);
+		thing.put("Fifth", 5);
+		thing.put("Sixth", 6);
+		thing.put("Seventh", 7);
+		thing.put("Eight", 8);
+		thing.put("Nineth", 9);
+		thing.put("Nineth", 10);
+		StdOut.println(thing.size("Third", "Eight"));
+		for (String word : thing.keys()) {
+			StdOut.println(word);
+		}
+	}
+
+}

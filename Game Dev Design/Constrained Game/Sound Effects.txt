@@ -1,0 +1,6 @@
+Kick
+Hit
+Jump
+Land
+double jump
+water landing

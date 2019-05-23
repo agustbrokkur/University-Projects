@@ -1,0 +1,13 @@
+package d3;
+
+import edu.princeton.cs.algs4.FrequencyCounter;
+
+public class TwoCities {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		FrequencyCounter counter = null;
+		counter.main(args);
+	}
+
+}

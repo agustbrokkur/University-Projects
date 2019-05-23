@@ -1,0 +1,235 @@
+/******************************************************************************
+ *  Compilation:  javac Formula.java        
+ *  Execution:    java Formula [input.txt]
+ *  Dependencies: Clause.java Asgmt.java Bag.java In.java StdOut.java
+ *  Date :        25 October 2014; revised 3-5 Oct 2017
+ *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt
+ *
+ *  A boolean formula, implemented as a bag of clauses
+ *
+ *  % java Graph tinyG.txt
+ ******************************************************************************/
+
+
+package sat2;
+
+import java.awt.Font;
+
+import edu.princeton.cs.algs4.Bag;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.SET;
+import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
+
+/**
+ *  The {@code Formula} class represents a boolean formula in a conjunctive normal form.
+ *  Formulas are constructed clause by clause, using addClause().
+ *  It includes methods for insertion, deletion, lookup. Also, there are operations that test properties of 
+ *  clauses given a partial boolean assignment: whether the clauses evaluates to true, to false, or if all but
+ *  one of its literals evaluate to false.
+ *  <p>
+ *  The implementation is a symbol table of variables (as integers) and sign, represented as booleans.
+ *  This makes it efficient for relatively short clauses.
+ *
+ *  @author Magnus M. Halldorsson
+ */
+
+
+public class Formula {
+    private static final String NEWLINE = System.getProperty("line.separator");
+    
+    private int n;  // Number of variables
+    private int m;  // Number of clauses
+    private Bag<Clause> clauses;		// Collection of clauses that constitute the formula
+    private SET<Integer> variables; 	// The set of variables in use
+
+    /*************************************************************************
+    *  Smiðir
+    *************************************************************************/
+
+   /**
+     * Initializes an empty formula with <tt>n</tt> variables.
+     * @param n the number of variables
+     * @throws java.lang.IllegalArgumentException if <tt>n</tt> is negative 
+     */
+    public Formula(int n) {
+        if (n < 0) throw new IllegalArgumentException("Number of variables must be nonnegative");
+        // this.n = n;    We now keep our own tab of the number of variables
+        clauses = new Bag<Clause>();
+        variables = new SET<Integer>();
+ //       vars = new int[n];
+    }
+
+    /**
+     * Read formula from input file
+     * @param in input stream
+     */
+    public Formula(In in) {
+    	int n = in.readInt(), m = in.readInt(); 
+        if (n < 0 || m < 0) throw new IllegalArgumentException("Number of variables must be nonnegative");
+//        this.n = n; this.m = m;
+        clauses = new Bag<Clause>();
+        variables = new SET<Integer>();
+
+        in.readLine();
+        for (int i = 0; i < m; i++) {
+            String[] tokens = in.readLine().split(",");
+            Clause newClause = new Clause();
+            for (String lit : tokens) {
+            	int var = Math.abs(Integer.parseInt(lit.trim()));
+            	boolean sign = (lit.charAt(0) != '-'); // sign = true iff value is positive
+            	newClause.add(var,sign);
+            }
+            addClause(newClause);
+        }
+        if (n != this.n) {
+        	StdOut.println("Stated number of variables ("+n+") doesn't match the actual ("+variables.size()+")");
+        }
+    }    
+
+    /* ************************************************************************
+     *  Retrieval methods
+     * ************************************************************************/
+
+    /**
+     * Return the number of variables
+     * @return the number of variables
+	 */
+      public int nVars() { return n; }     // return number variables
+
+      /**
+       * Return the number of clauses
+       * @return the number of clauses
+       */
+     public int nClauses() { return m; }       // return number of clauses 
+
+     /**
+      * Add a new clause to the formula
+      * @param clause the clause to be added
+      * Updates the number of clauses, and the list and number of variables used
+      */
+     public void addClause(Clause clause) {	
+    	 clauses.add(clause); 
+    	 m++;
+    	 for (int var : clause.vars()) 
+    		 if (!variables.contains(var)) {
+    			 variables.add(var);
+    			 n++;
+    		 }
+    }
+     
+
+    /* ************************************************************************
+     * Formula evaluation *
+     ** ***********************************************************************/
+
+     /**
+      * Test if the formula can be evaluated, based on the given partial assignment
+      * @param asg the partial assignment
+      * @return true if the formula can be evaluated
+      */
+    public boolean isValuated(Asgmt asg) {
+		boolean allClausesTrue = true;
+		for (Clause clause : clauses)
+		    if (clause.isFalse(asg)) return true;         // Ok, if some clause false
+		    else if (! clause.isTrue(asg))                // If clause is not valuated
+			{ allClausesTrue = false; }                             
+		return allClausesTrue;                                          // Ok, if All clauses true
+    }
+
+    // Solve: Does the given partial assignment satisfy the formula?
+    // Precondition: isValuated(asg) == true
+    /**
+     * Test if the the given partial assignment satisfies the formula.
+	 * Normally applied when we know the formula can be evaluated.
+     * @param asg the partial assignment
+     * @return true if the formula is satisfied
+     */
+    public boolean isSatisfied(Asgmt asg) {
+		for (Clause clause : clauses) 
+		    if (!clause.isTrue(asg)) return false;
+		return true;
+    }
+
+    /***************************************************************************
+     * Iterators.
+     ***************************************************************************/
+    
+    /**
+     * Returns an iterator that iterates over the clauses of the formula in order of insertion.
+     * The iterator doesn't implement {@code remove()}.
+     *
+     * @return an iterator that iterates over the clauses in order of insertion.
+     */
+    public Iterable<Clause> clauses() {
+        return clauses;
+    }
+
+    /**
+     * Returns an iterator that iterates over the variables used in the formula (in their natural order).
+     * The iterator doesn't implement {@code remove()}.
+     *
+     * @return an iterator that iterates over the variables used in the formula (in their natural order).
+     */
+    public Iterable<Integer> vars() { return variables; }
+    
+    /**
+     * Returns a string representation of this formula.
+     *
+     * @return the number of variables <em>n</em>, followed by the number of clauses <em>m</em>,
+     *         followed by <em>m</em> clauses
+     */
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append(n+" " + m);	
+		for (Clause clause : clauses)
+		    s.append(NEWLINE + clause);
+        return s.toString();
+    }		
+
+
+
+    /**
+     * Unit tests the {@code Formula} data type.
+     *
+     * @param args the command-line arguments
+     */
+    public static void main(String[] args) { 
+    	// StdDraw.setCanvasSize(1000,1000);
+    	//    	StdDraw.setScale(0,2);
+
+    	if (args.length > 0) {
+    		In in = new In(args[0]);
+    		Formula F = new Formula(in);
+    		StdOut.println("Formula with " + F.nVars()+" variables, and " + F.nClauses()+ " clauses");
+    		for (Clause clause : F.clauses())
+    		    StdOut.println(" : " + clause);
+    		StdOut.println(F);
+    	    }
+    	else {
+    		Formula F = new Formula(3);
+    		String cl1 = "1,-2,3", cl2 = "0,-1,-2";
+    		F.addClause(new Clause(cl1));  F.addClause(new Clause(cl2));
+    		StdOut.println("Formula: "+F);
+    		String afalse = "0:F,1:T,2:T", atrue = "2:F", apart = "0:F,3:T";
+    		Asgmt asgF = new Asgmt(afalse), asgT = new Asgmt(atrue), asgP = new Asgmt(apart);  
+    		StdOut.println("Asgmt "+afalse + " valuated : " + F.isValuated(asgF) + " satisfied: " + F.isSatisfied(asgF));
+    		StdOut.println("Asgmt "+atrue + " valuated : " + F.isValuated(asgT) + " satisfied: " + F.isSatisfied(asgT));
+    		StdOut.println("Asgmt "+apart + " valuated : " + F.isValuated(asgP) + " satisfied: " + F.isSatisfied(asgP));
+    		
+    		Font font = new Font("LucidaSans", Font.PLAIN, 18);
+    		StdDraw.setFont(font);
+    		StdDraw.textLeft(0.05,  0.95, "Formula");     		StdDraw.textLeft(0.5,  0.95, "Assignment");
+    		Plotting plotter = new Plotting();
+    		plotter.plotFormula(F, 0.05,  0.9,  0.3, asgF); plotter.plotAsgmt(asgF,0.5, 0.9, 0.2);
+    		plotter.plotFormula(F, 0.05,  0.8,  0.3, asgT); plotter.plotAsgmt(asgT,0.5, 0.8, 0.2);
+    		plotter.plotFormula(F, 0.05,  0.7,  0.3, asgP); plotter.plotAsgmt(asgP,0.5, 0.7, 0.2);
+    		StdDraw.show();
+    	}
+
+    }
+    
+
+}

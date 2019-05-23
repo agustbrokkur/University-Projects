@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdStats"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.QuickUnionUF"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.WeightedQuickUnionUF"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.Out"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.Point2D"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdDraw"/>
+<fullyQualifiedTypeName name="javax.xml.soap.Node"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.RectHV"/>
+<fullyQualifiedTypeName name="java.lang.instrument.Instrumentation"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdRandom"/>
+<fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.SET"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.Stopwatch"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.Digraph"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.In"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.BreadthFirstDirectedPaths"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.Queue"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.Stack"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.LSD"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdOut"/>
+</qualifiedTypeNameHistroy>

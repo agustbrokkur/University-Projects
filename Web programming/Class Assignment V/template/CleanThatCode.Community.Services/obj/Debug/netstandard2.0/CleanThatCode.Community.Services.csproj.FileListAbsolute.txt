@@ -1,0 +1,38 @@
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Services.deps.json
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Services.dll
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Services.pdb
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.csproj.CoreCompileInputs.cache
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.AssemblyInfoInputs.cache
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.AssemblyInfo.cs
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.dll
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.pdb
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Models.dll
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Repositories.dll
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Repositories.pdb
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Models.pdb
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/template/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.csproj.CopyComplete
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Services.deps.json
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Services.dll
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Services.pdb
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Models.dll
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Repositories.dll
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Repositories.pdb
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/bin/Debug/netstandard2.0/CleanThatCode.Community.Models.pdb
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.csproj.CoreCompileInputs.cache
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.AssemblyInfoInputs.cache
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.AssemblyInfo.cs
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.csproj.CopyComplete
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.dll
+/Users/arnarleifs/Desktop/Develop/RU/WebServices/Assignments/Class assignments/5/solution/CleanThatCode.Community.Services/obj/Debug/netstandard2.0/CleanThatCode.Community.Services.pdb
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\bin\Debug\netstandard2.0\CleanThatCode.Community.Services.deps.json
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\bin\Debug\netstandard2.0\CleanThatCode.Community.Services.dll
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\bin\Debug\netstandard2.0\CleanThatCode.Community.Services.pdb
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\bin\Debug\netstandard2.0\CleanThatCode.Community.Models.dll
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\bin\Debug\netstandard2.0\CleanThatCode.Community.Repositories.dll
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\bin\Debug\netstandard2.0\CleanThatCode.Community.Repositories.pdb
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\bin\Debug\netstandard2.0\CleanThatCode.Community.Models.pdb
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\obj\Debug\netstandard2.0\CleanThatCode.Community.Services.csproj.CoreCompileInputs.cache
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\obj\Debug\netstandard2.0\CleanThatCode.Community.Services.AssemblyInfoInputs.cache
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\obj\Debug\netstandard2.0\CleanThatCode.Community.Services.AssemblyInfo.cs
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\obj\Debug\netstandard2.0\CleanThatCode.Community.Services.dll
+C:\HR\H18\Vefforritun\Class Assignment V\template\CleanThatCode.Community.Services\obj\Debug\netstandard2.0\CleanThatCode.Community.Services.pdb

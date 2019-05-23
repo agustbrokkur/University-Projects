@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/Reiknirit/src/s2/Point.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.debug.ui.ATTR_CAPTURE_STDIN_FILE" value="${workspace_loc:/Reiknirit/S2/grid4x4.txt}"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="s2.Point"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="10 4000 30000 3500 28000 3000 22000 1000 18000 13000 21000 23000 16000 28000 135000 28000 5000 28000 1000"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Reiknirit"/>
+</launchConfiguration>

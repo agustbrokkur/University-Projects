@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Manifesto.Repositories",
+    "\\Manifesto.Services",
+    "\\Manifesto.WebApi"
+  ],
+  "SelectedNode": "\\Manifesto.Repositories\\BookDbContext.cs",
+  "PreviewInSolutionExplorer": false
+}

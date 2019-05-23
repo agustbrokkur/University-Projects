@@ -1,0 +1,133 @@
+﻿#Ágúst Helgi Árnason
+
+# Get total count of all ﬁlms
+query GetTotalFilms {
+  allFilms {
+    totalCount
+  }
+}
+
+#Get the title, director and release date for all ﬁlms
+query GetFilmInfo {
+  allFilms {
+    films {
+      id
+      title
+      director
+      releaseDate
+    }
+  }
+}
+
+#Get the title and release date of the last three ﬁlms
+query LastThreeInfo {
+  allFilms(last: 3) {
+    films {
+      title
+      releaseDate
+    }
+  }
+}
+
+#Get the id, title and opening crawl of a ﬁlm which has the id ZmlsbXM6MQ==
+query FilmById {
+  film(id: "ZmlsbXM6MQ==") {
+    id
+    title
+    openingCrawl
+  }
+}
+
+#Get the name, designation, average height and average lifespan of each species in the movie The Em
+query CreatureInfo {
+  film(id: "ZmlsbXM6Mg==") {
+    speciesConnection {
+      species {
+        name
+        designation
+        averageHeight
+        averageLifespan
+      }
+    }
+  }
+}
+
+#Get the name, terrain and associated ﬁlm title for every planet
+query PlanetInfo {
+  allPlanets {
+    planets {
+      name
+      terrains
+      filmConnection {
+        films {
+          title
+        }
+      }
+    }
+  }
+}
+
+#For all starships, get their name, pilot names and the name of the home world for each pilot associated with the starship
+query StarshipInfo {
+  allStarships {
+    starships {
+      name
+      pilotConnection {
+       	pilots {
+          name
+          homeworld {
+            name
+          }
+        }
+      }
+    }
+  }
+}
+
+#For all species, get their name and each persons name and eye color which is a part of that species
+query SpeciesInfo {
+  allSpecies {
+    species {
+      name
+      personConnection {
+        people {
+          name
+          eyeColor
+        }
+      }
+    }
+  }
+}
+
+#For all species, get their name and each persons name and hair color which is a part of that species and for each person which is a part of that species get the name, model, vehicle class and manufacturer for each vehicle associated with them
+query SpeciesDetailedInfo {
+  allSpecies {
+    species {
+      name
+      personConnection {
+        people {
+          id
+          name
+          hairColor
+          vehicleConnection {
+            vehicles {
+              name
+              model
+              vehicleClass
+              manufacturers
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#Find Vader’s name, birth year, height and mass
+query VaderInfo{
+  person(id: "cGVvcGxlOjQ=") {
+    name
+    birthYear
+    height
+  }
+}

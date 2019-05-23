@@ -1,0 +1,202 @@
+package sat2;
+
+
+import edu.princeton.cs.algs4.ST;
+import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
+
+/**
+ *  The {@code Clause} class represents a CNF clause, a conjunction of literals.
+ *  Clauses are mutable: their values can be changed after they are created.
+ *  It includes methods for insertion, deletion, lookup. Also, there are operations that test properties of 
+ *  clauses given a partial boolean assignment: whether the clauses evaluates to true, to false, or if all but
+ *  one of its literals evaluate to false.
+ *  <p>
+ *  The implementation is a symbol table of variables (as integers) and sign, represented as booleans.
+ *  This makes it efficient for relatively short clauses.
+ *
+ *  @author Magnus M. Halldorsson
+ */
+
+public class Clause {
+	private ST<Integer,Boolean> lits;    // Collection of literals
+	
+	public static final boolean STRAIGHT = true;	// Denotes an uncomplemented literal
+	public static final boolean COMPLEMENTED = false;  // Denotes a complemented literal
+	
+	/**
+     * Initializes an (empty) clause
+     */
+    public Clause() {
+        this.lits = new ST<Integer, Boolean>();
+    }
+
+    /**
+     * Create a clause from a string representation
+     * Comma-separated list of integers: 
+     * sign denotes complementation, absolute value is the variable
+     * @param str the clause in a string representation
+     */
+    public Clause(String str) {
+    	this.lits = new ST<Integer, Boolean>();
+    	String[] tokens = str.split(",");
+    	for (String lit : tokens) {
+    		int var = Math.abs(Integer.parseInt(lit));
+    		boolean sign = (lit.charAt(0) != '-'); // sign = true iff value is positive
+    		add(var,sign);
+    	}
+    }
+    
+    
+	/*** Basic retrieval and update methods ***/
+
+    /**
+     * Does variable 'var' appear in the clause?
+     * @param var the given variable
+	 * @return true if the given variable appears in the clause
+     */
+    public boolean contains(int var) { return lits.contains(var); }   // Does variable 'var' appear in the clause?
+	
+    /**
+     * Return the sign of the variable, as it appear in the clause (i.e., straight or complemented)
+     * Assumes that the variable actually occurs in the clause
+     * @param var the given variable
+	 * @return true if the given variable appears in the clause uncomplemented
+     */
+	public boolean sign(int var) { return lits.get(var); }    // Return the sign of the variable within the clause
+	
+    /**
+     * Return the number of literals in the clause
+	 * @return the number of literals in the clause
+     */
+	public int size() { return lits.size(); }					// Number of literals in the clause
+	
+    /**
+     * Insert a literal into a clause, replacing the one involving that variable if necessary.
+	 * @param var the variable
+	 * @param sign the complementarity of the literal
+     */
+	public void add(int var, boolean sign) { lits.put(var, sign); }	// Add literal into clause (replacing if needed)
+	
+	/*** Specialized retrieval methods **/
+	
+    /**
+    * Check if the clause evaluates to true, i.e., some literal evaluates to true
+	* @param asg the partial assignment
+    * @return true if the clause evaluates to true, i.e., some literal evaluates to true
+    */
+    public boolean isTrue(Asgmt asg) {
+		for (int var : vars())
+		    if (asg.contains(var)                     // If variable is evaluted..
+			&& (asg.get(var) == sign(var))) // .. and evaluates to true..
+		    	return true;                          // ..then success
+		return false;
+    }
+
+    /**
+    * Check if the clause evaluates to false, i.e. if all literals evaluate to false
+	* @param asg the partial assignment
+    * @return true if the clause evaluates to false, i.e. if all literals evaluate to false
+    */
+    public boolean isFalse(Asgmt asg) {
+		for (int var : vars())
+		    if (!asg.contains(var)                    // If variable not evaluted
+			|| (asg.get(var) == sign(var))) // or evaluates to true
+			return false;                         // Then fail
+		return true;
+    }
+
+
+    /**
+    * Check if 'clause' is a unit clause, under the partial assignment asg
+    * Return variable, or negative if not a unit clause
+	* @param asg the partial assignment
+    * @return true if the clause is a unit clause under the given partial assignment
+    */
+    public int isUnitClause(Asgmt asg) {
+		int variableFound = -1;
+		for (int v : vars()) {
+		    if (asg.contains(v)) {
+			if (sign(v) == asg.get(v))  // True literal
+			    return -1;
+			    // Else, false literal; nothing happens
+		    } else { // Free variable
+			if (variableFound >= 0) 
+			    return -1; // Two free variables in clause
+			else variableFound = v;
+		    }
+		}
+		return (variableFound); 
+    }
+
+
+    /**
+     * Returns an iterator that iterates over the variables used in the clause (in their natural order).
+     * The iterator doesn't implement {@code remove()}.
+     *
+     * @return an iterator that iterates over the variables used in the clause (in their natural order).
+     */
+    public Iterable<Integer> vars() {
+        return lits.keys();
+    }
+
+    
+    /**
+     * Returns a string representation of this clause
+     *
+     * @return the string representation of this clause
+     */
+    public String toString() {
+		StringBuilder s = new StringBuilder();
+	    int count = size();
+	    for (int v : vars()) {
+	    	s.append((sign(v) ? "" : "-")+v);
+	    	if (--count > 0)     // Don't print comma after last literal
+	    		s.append(",");
+	    }
+	    return s.toString();
+    }
+    
+
+   
+
+    
+    /*****************************************************************************
+     *  Test client
+     *****************************************************************************/
+    /**
+     * Unit tests the {@code Clause} data type.
+     *
+     * @param args the command-line arguments
+     */
+    public static void main(String[] args) { 
+    	 Clause cl = new Clause();
+    	 cl.add(1, STRAIGHT);
+    	 cl.add(2, COMPLEMENTED);
+    	 StdOut.println("Clause #1: "+cl + " of size: "+cl.size());
+    	 StdOut.println("Contains 1: "+cl.contains(1) + " Contains 3: "+cl.contains(3));
+    	 StdOut.println("Sign 1: "+cl.sign(1));
+
+    	 Asgmt asg = new Asgmt();
+    	 asg.add(1, Boolean.TRUE);
+    	 asg.add(3, Boolean.TRUE);
+    	 StdOut.println("Assignment #1:"+asg);
+    	 StdOut.println("Is false:"+ cl.isFalse(asg) + " is true:"+ cl.isTrue(asg) + " is unit: "+ cl.isUnitClause(asg));
+    	 Plotting pl = new Plotting();
+    	 pl.plotClause(cl,0.1, 0.9, asg);
+    	 asg.add(1, Boolean.FALSE);
+    	 StdOut.println("Assignment #2:"+asg);
+    	 StdOut.println("Is false:"+ cl.isFalse(asg) + " is true:"+ cl.isTrue(asg) + " is unit: "+ cl.isUnitClause(asg));
+    	 pl.plotClause(cl,0.1, 0.8, asg);
+    	 asg.add(2, Boolean.TRUE);
+    	 StdOut.println("Assignment #3:"+asg);
+    	 StdOut.println("Is false:"+ cl.isFalse(asg) + " is true:"+ cl.isTrue(asg) + " is unit: "+ cl.isUnitClause(asg));
+    	 pl.plotClause(cl,0.1, 0.7, asg);
+    	 
+    	 String clausestring = "-1,2,-3"; 
+    	 Clause clause = new Clause(clausestring);
+    	 StdOut.println(clausestring + " <--> " + clause);
+    	 pl.plotClause(clause,0.1, 0.6, asg);
+    	 StdDraw.show();
+     }     
+}

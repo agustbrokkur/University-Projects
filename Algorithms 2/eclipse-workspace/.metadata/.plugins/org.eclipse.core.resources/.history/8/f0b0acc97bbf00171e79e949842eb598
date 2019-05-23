@@ -1,0 +1,71 @@
+/*************************************************************************
+ *  Author :      Magnus M. Halldorsson
+ *  Date :        25 October 2014
+ *  Compilation:  javac Fgen.java
+ *  Execution:    java Fgen <n> <m> <k>
+ *  Dependencies: 
+ *  Data files:   
+ *    
+ *  Generation of k-CNF formulas
+ *
+ %     n : # variables
+ %     m : # clauses
+ %     k : # literals per clause
+ *************************************************************************/
+
+/***
+ * The {@code FormulaGeneration} class contains a static routine to generate random CNF formulas. 
+ */
+package sat2;
+
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
+
+
+public class FormulaGeneration {
+
+    /****  Sat generation and output routines ****/
+
+	/***
+    * Generate a random <tt>k</tt>-cnf formula with <tt>n</tt> variables and <tt>m</tt> clauses
+    * No checks for repeats, so the same variable may appear more than once
+	* @param n number of variables
+	* @param m number of clauses
+	* @param k clause length
+	* @return Returns a random CNF formula
+	 */
+    public static Formula RandomCNF(int n, int m, int k) {
+		Formula f = new Formula(n);
+		for (int i=0; i < m; i++) {
+		    Clause clause = new Clause();
+		    for (int j=0; j < k; j++)
+		    	clause.add(StdRandom.uniform(n),StdRandom.bernoulli());
+		    f.addClause(clause);
+		}
+		return f;
+    }
+	    
+  
+
+   /*****************************************************************************
+    *  Test client
+    *****************************************************************************/
+    /**
+     * Unit tests the {@code FormulaGeneration} data type.
+     *
+     * @param args the command-line arguments
+     */
+    public static void main(String[] args) { 
+	if (args.length < 3) {
+	    StdOut.println("Usage: java Fgen n m k");
+	    return;
+	}
+	int n = Integer.parseInt(args[0]),
+	    m = Integer.parseInt(args[1]),
+	    k = Integer.parseInt(args[2]);
+
+        Formula F = FormulaGeneration.RandomCNF(n,m,k);
+        StdOut.println(F);
+    }
+
+}

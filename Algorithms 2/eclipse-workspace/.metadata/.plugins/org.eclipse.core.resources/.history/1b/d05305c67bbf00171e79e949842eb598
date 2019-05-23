@@ -1,0 +1,269 @@
+package sat2;
+
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
+
+public class Solvers {
+
+	private int nStates;
+    private Asgmt assignment;  // The final assignment stored here
+	private final boolean TRACE = true;
+	private final boolean PLOTTING = true;
+	private Plotting plotter;
+	private String solverstring;
+	
+//	private double scale = 1.0;
+	
+	/*** Report function ***/
+	
+    /**
+     * Returns the number of states explored by the solver
+     * @return the number of states explored by the solver
+     */
+    public int nStates() { return nStates; }
+
+    /**
+     * Returns the final assignment.
+     * The assignment is satisfying, if the formula is satisfiable.
+     * Otherwise, it is the last state explored.
+     * @return the final assignment
+     */
+    public Asgmt satAsgmt() { return assignment; }
+	
+    /*** Solvers ***/
+    
+    /*** Naive satisfiability solver ***/
+
+    /**
+     * A naive satisfiability solver.
+     * It explores all 2^n possible assignment, unless it finds a satisfying one.
+     * @param F CNF formula
+     * @return the satisfiability of the formula
+     */
+    public boolean naiveSatisfiability(Formula F) {
+		assignment = new Asgmt();
+		nStates=0;
+		return naiveSatisfiability(F,assignment);
+    }
+
+    // Recursive solver:
+    //    asg : partial assignment to the variables
+    //  Stop as soon as a satisfying assignment is found
+    private boolean naiveSatisfiability(Formula F, Asgmt asg) {
+		nStates++;
+		if (asg.size() == F.nVars()) {
+			if (TRACE) { StdOut.println("["+asg+"]"); } 
+			return F.isSatisfied(asg);
+		}
+		int v = nextVariable(F,asg);
+		asg.add(v, true);  
+		if (PLOTTING) plotter.plotBasic(F,asg);
+		if (naiveSatisfiability(F,asg)) return true;
+		if (TRACE) { asg.remove(v); StdOut.println(asg); } 
+		asg.add(v, false); 
+		if (PLOTTING) plotter.plotBasic(F,asg);
+		if (naiveSatisfiability(F,asg)) return true;
+		asg.remove(v);
+		return false;
+    }
+
+    /**
+     * A backtracking satisfiability solver.
+     * @param F CNF formula
+     * @return the satisfiability of the formula
+     */
+    public boolean bbSatisfiability(Formula F) {
+		assignment = new Asgmt();
+		nStates=0;
+		return bbSatisfiability(F, assignment);
+    }
+
+    // Recursive solver:
+    //    asg : partial assignment to the variables
+    //   Terminates search as soon as formula is satisfied
+    private boolean bbSatisfiability(Formula F, Asgmt asg) {
+		nStates++;
+		if (F.isValuated(asg)) {
+		    boolean result = F.isSatisfied(asg);
+		    	if (TRACE) { StdOut.println(asg + (result ? "SUCCESS " : "XXX")); } 
+		    return result;
+		}
+		int v = nextVariable(F,asg);
+		asg.add(v, true);
+		if (PLOTTING) plotter.plotBasic(F,asg);
+		if (bbSatisfiability(F,asg)) return true;
+		if (TRACE) { asg.remove(v); StdOut.println(asg); } 
+		asg.add(v, false); 	
+		if (PLOTTING) plotter.plotBasic(F,asg);
+		if (bbSatisfiability(F,asg)) return true;
+		asg.remove(v);
+		return false;
+    }
+
+    /**
+     * The pivoting method, selecting the next variable to examine.
+     * Our basic implementation simply selects the next unassigned variable.
+     * @param F CNF formula
+     * @param asg A partial boolean assignment
+     * @return the next variable to examine by the solver, or -1, if no variable is unassigned.
+     */
+   public int nextVariable(Formula F, Asgmt asg) {
+		for (int var : F.vars())
+		    if (!asg.contains(var)) return var;
+		StdOut.println("No available variable found");
+		StdOut.println("Assignment: "+asg);
+		StdOut.println("Formula:"+F);
+		assert false : asg;
+		return(-1);
+    }
+
+    // Identify all unit clauses, and return those literals
+    private Asgmt unitClauseVars(Formula F, Asgmt asg) {
+		Asgmt unitVars = new Asgmt();
+		for (Clause clause : F.clauses())  {
+		    int v = clause.isUnitClause(asg);
+		    if (v >= 0) 
+		    	unitVars.add(v,clause.sign(v));
+		}
+		return unitVars;
+    }
+	
+    /**
+    * Perform unit clause propagation.
+    * Find literals that appearing in unit clauses
+    * Modifies asg, inserting those unit literals 
+    * @param F the CNF formula
+    * @param asg the current assignment
+     * @return The set of literals in unit clauses
+     */
+    public Asgmt unitLits(Formula F, Asgmt asg) {
+		Asgmt unitVars = new Asgmt(),
+		    newUnitVars = unitClauseVars(F, asg);
+		while (newUnitVars.size() > 0) {
+			unitVars.joinAsgmt(newUnitVars);  // Add new fixed vars to list
+		    asg.joinAsgmt(newUnitVars);       // Add all fixed variables to asgmt
+		    newUnitVars = unitClauseVars(F, asg);
+//			if (PLOTTING && unitVars.size() > 0) plotter.plotAll(F,asg);
+		}
+		return unitVars;
+    }
+
+    /**
+     * A solver in the vein of Davis-Putnam.
+     * Implements unit clause propagation (but not the other rule)
+     * @param F CNF formula
+     * @return the satisfiability of the formula
+     */
+    // Davis-Putnam satisfiability solver
+    public boolean dpSatisfiability(Formula F) {
+		Asgmt asg = new Asgmt();
+		nStates=0;
+		return dpSatisfiability(F, asg);
+    }
+
+    // Recursive Davis-Putnam satisfiability solver
+    //    asg : partial assignment to the variables
+    private boolean dpSatisfiability(Formula F, Asgmt asg) {
+		nStates++;
+		Asgmt unitVars = unitLits(F, asg);
+		if (PLOTTING && unitVars.size() > 0) plotter.plotAll(F,asg); 
+		if (F.isValuated(asg)) {
+		    boolean result = F.isSatisfied(asg);
+	    	if (TRACE) { StdOut.println(asg + (result ? "SUCCESS " : "XXX")); } 
+		    if (!result) asg.unset(unitVars);   // Remove fixed variables from asgmt
+		    return result;
+		}
+		int v = nextVariable(F,asg);
+		asg.add(v, true); 
+		if (PLOTTING) plotter.plotAll(F,asg);
+		if (dpSatisfiability(F,asg)) return true;
+    	if (TRACE) { asg.remove(v); StdOut.println(asg); } 
+		asg.add(v, false);
+		if (PLOTTING) plotter.plotAll(F,asg);
+		if (dpSatisfiability(F,asg)) return true;
+		asg.unset(unitVars);   // Remove fixed variables from asgmt
+		asg.remove(v);
+		return false;
+    }
+
+ 
+    /**
+     * A master routine to run one of the solver.
+     * Implements unit clause propagation (but not the other rule)
+	 * @param solverType value 1,2 or 3, for a naive, backtracking, or D-P solver
+     * @param F the formula
+     * @return the satisfiability of the formula
+     */
+
+    public boolean runSolver(int solverType, Formula F) {
+ 	    boolean result;
+	    if (solverType == 1) {
+ 	    	StdOut.println("Naive: ");
+ 	    	solverstring = "Truth-table solver";
+ 	    	result = naiveSatisfiability(F);
+ 	    } else if (solverType == 3) {
+ 	    	StdOut.println("DPLL: ");
+ 	    	solverstring = "DPLL solver";
+ 	    	result = dpSatisfiability(F);
+ 	    } else {
+ 	    	StdOut.println("BB: ");
+ 	    	solverstring = "Bactracking solver";
+ 	    	result = bbSatisfiability(F);
+ 	    }
+ 	    if (result) { 
+ 	    	StdOut.print("Satisfiable: "+satAsgmt());
+ 	    	assert F.isSatisfied(satAsgmt());
+ 	    }
+ 	    else StdOut.print("Not satisfiable: ");
+ 	    StdOut.println("#states: " + nStates);
+ 	    if (PLOTTING) { StdDraw.textLeft(0.1,  0.2,  "Result: "+(result ? "Satisfiable" : "Not satisfiable")); StdDraw.show(); }
+ 	    return result;
+    }
+    	
+    /*****************************************************************************
+     *  Test client
+     *****************************************************************************/
+    
+    /**
+     * Client to run solvers on given boolean formulas.
+     * Optionally runs visualization (if PLOTTING variable is set) of the solver progress.
+     * @param args the command line arguments
+     */
+ 
+     public static void main(String[] args) { 
+	 	if (args.length < 2) {
+	 	    StdOut.println("Usage: java Solvers n m k <1/2/3> <#tests>");
+	 	    StdOut.println("  OR : java Solvers Filename <1/2/3>");
+	 	    StdOut.println("1:naive, 2:bb, 3:dp");
+	 	    return;
+	 	}
+ 	    Solvers X = new Solvers();
+ 	    X.plotter = new Plotting();
+ 	    if (args.length < 3) {
+	 		In in = new In(args[0]);
+	 		Formula F = new Formula(in);
+		 	int solver = 2;
+		 	if (args.length > 1)
+		 	    solver = Integer.parseInt(args[1]);
+		 	X.runSolver(solver, F);
+	 	} else {
+		 	int n = Integer.parseInt(args[0]),  // number of variables
+		 	    m = Integer.parseInt(args[1]),  // number of clauses
+		 	    k = Integer.parseInt(args[2]);  // number of literals per clause
+		
+		 	int solver = 2;
+		 	if (args.length > 3)
+		 	    solver = Integer.parseInt(args[3]);
+		
+		 	int ntests = 10;
+		 	if (args.length > 4)
+		 	    ntests = Integer.parseInt(args[4]);
+		
+		 	for (int i=0; i < ntests; i++) {
+		 	    Formula F = FormulaGeneration.RandomCNF(n,m,k);
+		 	    X.runSolver(solver,F);
+		 	}
+	 	}
+     }
+}

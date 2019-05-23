@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TicTacToe</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            	crossorigin="anonymous"></script>
+
+    	<script src="/js/ajax.js" type="text/javascript"></script>
+    	<link rel="stylesheet" href="/css/site.css">	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="row">
+		<div class="site-header col-xs-4">
+			<a id="new-game" class="btn btn-success" href="/api/refresh">New game!</a>	
+		</div>
+                <div class="site-header col-xs-4">
+			<h2 id="header">Play TicTacToe!</h2>
+                </div>
+                <div class="site-header col-xs-4">
+
+                </div>
+
+	</div>
+	<div class="container game-board">
+		<div class="row">
+			<div id="1" class="col-xs-4 box">
+				<div class="slot 1"></div>
+			</div>
+			<div id="2" class="col-xs-4 box">
+                                <div class="slot 2"></div>
+                        </div>
+			<div id="3" class="col-xs-4 box">
+                                <div class="slot 3"></div>
+                        </div>
+		</div>
+                <div class="row">
+                        <div id="4" class="col-xs-4 box">
+                                <div class="slot 4"></div>
+                        </div>
+                        <div id="5" class="col-xs-4 box">
+                                <div class="slot 5"></div>
+                        </div>
+                        <div id="6" class="col-xs-4 box">
+                                <div class="slot 6"></div>
+                        </div>
+                </div>
+                <div class="row">
+                        <div id="7" class="col-xs-4 box">
+                                <div class="slot 7"></div>
+                        </div>
+                        <div id="8" class="col-xs-4 box">
+                                <div class="slot 8"></div>
+                        </div>
+                        <div id="9" class="col-xs-4 box">
+                                <div class="slot 9"></div>
+                        </div>
+                </div>		
+	</div>	
+</body>
+</html>

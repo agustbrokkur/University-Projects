@@ -1,0 +1,267 @@
+package sat2;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
+
+public class Plotting {
+
+	private final Color TrueColor = StdDraw.BLUE;					// For true literals, variables
+	private final Color FalseColor = StdDraw.GRAY;				// For false literals, variables
+	private final Color FalsifiedBackgroundColor = StdDraw.CYAN;  // For falsified clauses
+	private final Color BackgroundColor = new Color(230,240,240);  // Background
+	
+	private double charheight;		// Our best estimate of the height of a character in the underlying font
+	private double charwidth; 		// Our best estimate of the width of a character in the underlying font
+	private double variableWidth = 0.05;  // Separation between variables in the display of an assignment
+	private Color baseColor;		// The underlying color 
+	private Font baseFont;			// The font we use
+//	private Formula F;				// The formula we work on
+	
+	public Plotting() {
+//		F = fmla; 
+//	   	Font origfont = StdDraw.getFont();
+//    	Font curfont = origfont.deriveFont(Font.BOLD);
+ 	    baseFont = new Font("Garamond", Font.BOLD, 22);
+ 	    StdDraw.setFont(baseFont);
+
+ 	    charwidth = baseFont.getSize()*0.35*0.003;
+    	charheight = charwidth*1.2;
+
+    	StdDraw.enableDoubleBuffering();
+    	baseColor = StdDraw.getPenColor();
+    	StdDraw.clear(BackgroundColor);
+    	StdDraw.setCanvasSize(1500,750);
+    	StdDraw.setXscale(0.0, 2.0);
+    	StdDraw.setPenRadius(0.003);   // Different pen thickness
+	}
+
+	// Print a variable graphically at location (x,y)
+    // Caveat: The scale-to-canvas-size ratio needs to be constant; 
+    //   if you change canvas size, you must scale the geometry accordingly
+    public void plotVariable(int var, double x, double y) {
+    	Font curfont = baseFont.deriveFont(Font.BOLD);
+    	float smallsize = curfont.getSize2D() - (float) 2;
+    	Font smallfont = curfont.deriveFont(smallsize);
+
+    	StdDraw.setFont(curfont);
+
+		StdDraw.textLeft(x,y, "x");
+		// Draw variable index as subscript
+		StdDraw.setFont(smallfont);
+		String varstr = Integer.toString(var);
+		StdDraw.textLeft(x+charwidth*0.8, y-charheight/2, varstr);
+		
+		StdDraw.setFont(baseFont);	
+    }
+    
+
+    public void plotAsgmt(Asgmt asg, double x, double y, double width) {
+ 	//   StdDraw.textLeft(x, y, "Assignment");
+ 	//   y -= 0.04;
+ 	   double curx = x;
+ 	   for (int var : asg.vars()) {
+ 		   StdDraw.setPenColor((asg.get(var) ? TrueColor : FalseColor));
+ 		   plotVariable(var, curx, y);
+ 		   curx += 0.05;
+ 	   }
+ 	   StdDraw.setPenColor(baseColor);
+    }
+    
+    // Print the clause graphically, starting at location (x,y)
+    public double plotClause(Clause cl, double x, double y) {  return plotClause(cl, x,y,new Asgmt()); }
+    
+     // Print the clause graphically, starting at location (x,y)
+    // Annotates it, with a given assignment asg
+    // Returns: The displacement (width of the displayed text)
+    public double plotClause(Clause cl, double x, double y, Asgmt asg) {
+    	Color curcolor = StdDraw.getPenColor();
+
+    	boolean unitClause = !cl.isTrue(asg) && (cl.isUnitClause(asg) >= 0);
+
+    	// Cyan background for falsified clauses
+    	if (cl.isFalse(asg)) {
+    		StdDraw.setPenColor(FalsifiedBackgroundColor);
+    		StdDraw.filledRectangle(x+charwidth*(cl.size()-0.3), y, charwidth*(cl.size()), charheight);
+    	}
+    	for (int var : cl.vars()) {
+        	// Red circle on unit-clause literals
+    		if (unitClause && !asg.contains(var)) {   // If this is the only unassigned variable in a unit clause 
+    			StdDraw.setPenColor(StdDraw.RED);
+    			StdDraw.circle(x+charwidth*0.6, y, charheight*1);
+    		}
+    		// Choose color: unassigned, true, false variables
+    		StdDraw.setPenColor(StdDraw.BLACK);
+    		if (asg.contains(var)) {
+				if (asg.get(var) == cl.sign(var))    // Literal is TRUE
+	    			StdDraw.setPenColor(TrueColor);
+    			else							// Literal is FALSE
+    				StdDraw.setPenColor(FalseColor);
+    		}
+    		// Draw the variable (including subscript)
+    		plotVariable(var,x,y);
+    		// Draw bar over complemented variables
+    		if (cl.sign(var) == Clause.COMPLEMENTED) StdDraw.line(x, y+charheight*0.5, x+charwidth*1, y+charheight*0.5);
+    		// Update displacement
+    		String varstr = Integer.toString(var);
+    		x += charwidth * (1.1 + 0.8*varstr.length());
+    	}
+    	// Red strikeover on satisfied clauses
+    	if (cl.isTrue(asg)) {
+    		StdDraw.setPenColor(StdDraw.RED);
+    		StdDraw.line(x-cl.size()*2*charwidth, y-charheight*0.2, x-charwidth*0.4, y-charheight*0.2);
+    	}
+    	
+   		StdDraw.setPenColor(curcolor);
+    	StdDraw.textLeft(x,y, ","); 
+    	return x;   // Return final displacement
+    }
+  
+    // Print a formula graphically
+    // Parameters: x,y: starting location; width : margin allocated 
+    public void plotFormula(Formula F, double x, double y, double width, Asgmt asg) {
+    	double curx = x, cury = y;
+    	for (Clause clause : F.clauses()) {
+    		if (curx > x + width) {
+    			curx = x; cury -= 0.06;
+    		}
+    		curx = plotClause(clause,curx, cury,asg) + 0.04;
+    	}
+    }
+  
+    // Choose next variable to branch on
+    // Solution here: Next unassigned variable
+    // Returns -1, if no variable is unassigned
+    public int nextVariable(Formula F, Asgmt asg) {
+		for (int var : F.vars())
+		    if (!asg.contains(var)) return var;
+		StdOut.println("No available variable found");
+		StdOut.println("Assignment: "+asg);
+		StdOut.println("Formula:"+F);
+		assert false : asg;
+		return(-1);
+    }
+
+    // Identify all unit clauses, and return those literals
+    private Asgmt unitClauseVars(Formula F, Asgmt asg) {
+		Asgmt unitVars = new Asgmt();
+		for (Clause clause : F.clauses())  {
+		    int v = clause.isUnitClause(asg);
+		    if (v >= 0) 
+		    	unitVars.add(v,clause.sign(v));
+		}
+		return unitVars;
+    }
+	
+    // Find literals appearing in unit clauses
+    // Returns: The set of literals in unit clauses
+    // Modifies: asg, by inserting those unit literals
+    public Asgmt unitLits(Formula F, Asgmt asg) {
+		Asgmt unitVars = new Asgmt(),
+		    newUnitVars = unitClauseVars(F, asg);
+		while (newUnitVars.size() > 0) {
+			unitVars.joinAsgmt(newUnitVars);  // Add new fixed vars to list
+		    asg.joinAsgmt(newUnitVars);       // Add all fixed variables to asgmt
+		    newUnitVars = unitClauseVars(F, asg);
+		}
+		return unitVars;
+    }
+
+    public void traceAsgmt(Formula F, Asgmt asg, double x, double y, double width) {
+    	double curx = x;
+    	Asgmt anew = new Asgmt();
+    	while (anew.size() < asg.size()) {
+    		int var = nextVariable(F,anew);
+    		boolean sign = asg.get(var);
+    		anew.add(var,sign);
+    		StdDraw.setPenColor((sign ? TrueColor : FalseColor));
+    		plotVariable(var, curx, y);
+    		curx += variableWidth;   	 
+
+    		Asgmt units = unitLits(F,anew);
+    		if (units.size() > 0) {
+    			StdDraw.setPenColor(StdDraw.BLACK);
+	    		StdDraw.textLeft(curx, y, "["); curx += charwidth;
+	    		plotAsgmt(units, curx, y, 1.0);
+	    		curx += variableWidth*units.size();
+    			StdDraw.setPenColor(StdDraw.BLACK);
+	    		StdDraw.textLeft(curx, y, "]"); curx += charwidth;
+    		}
+    		y -= charheight*2.0;
+    	}
+    	
+    }
+
+    // Display both the current formula and the assignment
+    public void plotAll(Formula F, Asgmt asg) {
+        StdDraw.clear(BackgroundColor);
+        StdDraw.setPenColor(StdDraw.BLACK);
+		StdDraw.textLeft(0.05,  0.95, "Formula");   		StdDraw.textLeft(1.05,  0.95, "Assignment");
+		plotFormula(F, 0.05,  0.9,  0.8, asg); 	
+		// plotAsgmt(asg, 1.05, 0.9, 0.8);
+		traceAsgmt(F,asg,1.05, 0.9, 0.8);
+		
+		// Draw a legend
+		final double xlegend = 1.6, xexplan = 1.7, legend_ht=0.04;
+		StdDraw.setPenColor(TrueColor); plotVariable(3, xlegend, 5*legend_ht);  
+		StdDraw.setPenColor(StdDraw.BLACK); StdDraw.textLeft(xexplan, 5*legend_ht, "True literal/variable");
+		StdDraw.setPenColor(FalseColor); plotVariable(2, xlegend, 4*legend_ht);  
+		StdDraw.setPenColor(StdDraw.BLACK); StdDraw.textLeft(xexplan, 4*legend_ht, "False literal/variable");
+		StdDraw.setPenColor(StdDraw.BLACK); plotVariable(4, xlegend, 3*legend_ht);  
+		StdDraw.setPenColor(StdDraw.BLACK); StdDraw.textLeft(xexplan, 3*legend_ht, "Unassigned literal/variable");
+		StdDraw.setPenColor(FalsifiedBackgroundColor); StdDraw.filledRectangle(xlegend, 2*legend_ht, 0.03, charheight/2);
+		StdDraw.setPenColor(StdDraw.BLACK); StdDraw.textLeft(xexplan, 2*legend_ht, "Falsified clause");
+		StdDraw.setPenColor(StdDraw.BLACK); plotVariable(1, xlegend, 1*legend_ht); 
+		StdDraw.setPenColor(StdDraw.RED); StdDraw.circle(xlegend+charwidth*0.8, 1*legend_ht, charwidth);  
+		StdDraw.setPenColor(StdDraw.BLACK); StdDraw.textLeft(xexplan, 1*legend_ht, "Unit literal");
+
+		while (!StdDraw.hasNextKeyTyped())
+			StdDraw.pause(20);
+		StdDraw.nextKeyTyped();
+		StdDraw.show();
+        // StdDraw.pause(1000);
+    }
+
+    // Display both the current formula and the assignment, without tracing
+    public void plotBasic(Formula F, Asgmt asg) {
+        StdDraw.clear(BackgroundColor);
+        StdDraw.setPenColor(StdDraw.BLACK);
+		StdDraw.textLeft(0.05,  0.95, "Formula");   		StdDraw.textLeft(1.05,  0.95, "Assignment");
+		plotFormula(F, 0.05,  0.9,  0.8, asg); 	
+		plotAsgmt(asg, 1.05, 0.9, 0.8);
+		// traceAsgmt(F,asg,1.05, 0.9, 0.8);
+		
+		while (!StdDraw.hasNextKeyTyped())
+			StdDraw.pause(20);
+		StdDraw.nextKeyTyped();
+		StdDraw.show();
+        // StdDraw.pause(1000);
+    }
+    
+    /**
+     * Unit tests the {@code Plotting} data type.
+     *
+     * @param args the command-line arguments
+     */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		StdDraw.setPenColor(StdDraw.BLACK);
+//		StdDraw.line(0.1,  0.2,  0.3,  0.4);
+		double x=0.2, y = 0.2;
+//		StdDraw.textLeft(x,y, "x");
+		Plotting pl = new Plotting();
+		StdDraw.line(0.1,  0.2,  0.3,  0.4);
+		pl.plotVariable(1,  x,y);
+		StdDraw.textLeft(x,y, "x");
+		// Draw variable index as subscript
+//		StdDraw.setFont(smallfont);
+		String varstr = Integer.toString(1);
+//		StdDraw.textLeft(x+charwidth, y-charheight/2, varstr);
+		StdDraw.show();
+		
+	}
+
+}
