@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1479110627 source:c:\hr\h16\forritun\verk\string set\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<cmath>
+	<vector>
+	"stringset.h"
+
+1479110612 c:\hr\h16\forritun\verk\string set\stringset.h
+	<iostream>
+	<vector>
+
+1479110604 source:c:\hr\h16\forritun\verk\string set\stringset.cpp
+	"stringset.h"
+
