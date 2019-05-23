@@ -1,0 +1,6 @@
+DROP TABLE Coffees CASCADE;
+DROP TABLE Coffeehouses CASCADE;
+DROP TABLE Drinkers CASCADE;
+DROP TABLE Likes;
+DROP TABLE Frequents;
+DROP TABLE Sells;

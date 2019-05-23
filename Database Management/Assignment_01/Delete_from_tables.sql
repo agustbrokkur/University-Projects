@@ -1,0 +1,6 @@
+DELETE FROM Likes;
+DELETE FROM Frequents;
+DELETE FROM Sells;
+DELETE FROM Coffees;
+DELETE FROM Coffeehouses;
+DELETE FROM Drinkers;

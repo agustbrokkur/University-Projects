@@ -1,0 +1,800 @@
+select 'a-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct b)
+from r1
+group by a
+having count(Distinct b) >1
+)X UNION
+select 'a-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct c)
+from r1
+group by a
+having count(Distinct c) >1
+)X UNION
+select 'a-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct d)
+from r1
+group by a
+having count(Distinct d) >1
+)X UNION
+select 'a-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct e)
+from r1
+group by a
+having count(Distinct e) >1
+)X UNION
+select 'b-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct a)
+from r1
+group by b
+having count(Distinct a) >1
+)X UNION
+select 'b-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct c)
+from r1
+group by b
+having count(Distinct c) >1
+)X UNION
+select 'b-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct d)
+from r1
+group by b
+having count(Distinct d) >1
+)X UNION
+select 'b-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct e)
+from r1
+group by b
+having count(Distinct e) >1
+)X UNION
+select 'c-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct a)
+from r1
+group by c
+having count(Distinct a) >1
+)X UNION
+select 'c-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct b)
+from r1
+group by c
+having count(Distinct b) >1
+)X UNION
+select 'c-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct d)
+from r1
+group by c
+having count(Distinct d) >1
+)X UNION
+select 'c-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct e)
+from r1
+group by c
+having count(Distinct e) >1
+)X UNION
+select 'd-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct a)
+from r1
+group by d
+having count(Distinct a) >1
+)X UNION
+select 'd-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct b)
+from r1
+group by d
+having count(Distinct b) >1
+)X UNION
+select 'd-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct c)
+from r1
+group by d
+having count(Distinct c) >1
+)X UNION
+select 'd-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct e)
+from r1
+group by d
+having count(Distinct e) >1
+)X UNION
+select 'e-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct a)
+from r1
+group by e
+having count(Distinct a) >1
+)X UNION
+select 'e-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct b)
+from r1
+group by e
+having count(Distinct b) >1
+)X UNION
+select 'e-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct c)
+from r1
+group by e
+having count(Distinct c) >1
+)X UNION
+select 'e-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct d)
+from r1
+group by e
+having count(Distinct d) >1
+)X UNION
+select 'a-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct b)
+from r2
+group by a
+having count(Distinct b) >1
+)X UNION
+select 'a-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct c)
+from r2
+group by a
+having count(Distinct c) >1
+)X UNION
+select 'a-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct d)
+from r2
+group by a
+having count(Distinct d) >1
+)X UNION
+select 'a-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct e)
+from r2
+group by a
+having count(Distinct e) >1
+)X UNION
+select 'b-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct a)
+from r2
+group by b
+having count(Distinct a) >1
+)X UNION
+select 'b-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct c)
+from r2
+group by b
+having count(Distinct c) >1
+)X UNION
+select 'b-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct d)
+from r2
+group by b
+having count(Distinct d) >1
+)X UNION
+select 'b-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct e)
+from r2
+group by b
+having count(Distinct e) >1
+)X UNION
+select 'c-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct a)
+from r2
+group by c
+having count(Distinct a) >1
+)X UNION
+select 'c-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct b)
+from r2
+group by c
+having count(Distinct b) >1
+)X UNION
+select 'c-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct d)
+from r2
+group by c
+having count(Distinct d) >1
+)X UNION
+select 'c-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct e)
+from r2
+group by c
+having count(Distinct e) >1
+)X UNION
+select 'd-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct a)
+from r2
+group by d
+having count(Distinct a) >1
+)X UNION
+select 'd-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct b)
+from r2
+group by d
+having count(Distinct b) >1
+)X UNION
+select 'd-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct c)
+from r2
+group by d
+having count(Distinct c) >1
+)X UNION
+select 'd-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct e)
+from r2
+group by d
+having count(Distinct e) >1
+)X UNION
+select 'e-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct a)
+from r2
+group by e
+having count(Distinct a) >1
+)X UNION
+select 'e-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct b)
+from r2
+group by e
+having count(Distinct b) >1
+)X UNION
+select 'e-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct c)
+from r2
+group by e
+having count(Distinct c) >1
+)X UNION
+select 'e-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct d)
+from r2
+group by e
+having count(Distinct d) >1
+)X UNION
+select 'a-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct b)
+from r3
+group by a
+having count(Distinct b) >1
+)X UNION
+select 'a-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct c)
+from r3
+group by a
+having count(Distinct c) >1
+)X UNION
+select 'a-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct d)
+from r3
+group by a
+having count(Distinct d) >1
+)X UNION
+select 'a-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct e)
+from r3
+group by a
+having count(Distinct e) >1
+)X UNION
+select 'b-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct a)
+from r3
+group by b
+having count(Distinct a) >1
+)X UNION
+select 'b-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct c)
+from r3
+group by b
+having count(Distinct c) >1
+)X UNION
+select 'b-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct d)
+from r3
+group by b
+having count(Distinct d) >1
+)X UNION
+select 'b-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct e)
+from r3
+group by b
+having count(Distinct e) >1
+)X UNION
+select 'c-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct a)
+from r3
+group by c
+having count(Distinct a) >1
+)X UNION
+select 'c-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct b)
+from r3
+group by c
+having count(Distinct b) >1
+)X UNION
+select 'c-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct d)
+from r3
+group by c
+having count(Distinct d) >1
+)X UNION
+select 'c-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct e)
+from r3
+group by c
+having count(Distinct e) >1
+)X UNION
+select 'd-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct a)
+from r3
+group by d
+having count(Distinct a) >1
+)X UNION
+select 'd-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct b)
+from r3
+group by d
+having count(Distinct b) >1
+)X UNION
+select 'd-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct c)
+from r3
+group by d
+having count(Distinct c) >1
+)X UNION
+select 'd-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct e)
+from r3
+group by d
+having count(Distinct e) >1
+)X UNION
+select 'e-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct a)
+from r3
+group by e
+having count(Distinct a) >1
+)X UNION
+select 'e-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct b)
+from r3
+group by e
+having count(Distinct b) >1
+)X UNION
+select 'e-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct c)
+from r3
+group by e
+having count(Distinct c) >1
+)X UNION
+select 'e-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct d)
+from r3
+group by e
+having count(Distinct d) >1
+)X UNION
+select 'a-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct b)
+from r4
+group by a
+having count(Distinct b) >1
+)X UNION
+select 'a-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct c)
+from r4
+group by a
+having count(Distinct c) >1
+)X UNION
+select 'a-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct d)
+from r4
+group by a
+having count(Distinct d) >1
+)X UNION
+select 'a-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct e)
+from r4
+group by a
+having count(Distinct e) >1
+)X UNION
+select 'b-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct a)
+from r4
+group by b
+having count(Distinct a) >1
+)X UNION
+select 'b-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct c)
+from r4
+group by b
+having count(Distinct c) >1
+)X UNION
+select 'b-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct d)
+from r4
+group by b
+having count(Distinct d) >1
+)X UNION
+select 'b-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct e)
+from r4
+group by b
+having count(Distinct e) >1
+)X UNION
+select 'c-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct a)
+from r4
+group by c
+having count(Distinct a) >1
+)X UNION
+select 'c-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct b)
+from r4
+group by c
+having count(Distinct b) >1
+)X UNION
+select 'c-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct d)
+from r4
+group by c
+having count(Distinct d) >1
+)X UNION
+select 'c-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct e)
+from r4
+group by c
+having count(Distinct e) >1
+)X UNION
+select 'd-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct a)
+from r4
+group by d
+having count(Distinct a) >1
+)X UNION
+select 'd-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct b)
+from r4
+group by d
+having count(Distinct b) >1
+)X UNION
+select 'd-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct c)
+from r4
+group by d
+having count(Distinct c) >1
+)X UNION
+select 'd-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct e)
+from r4
+group by d
+having count(Distinct e) >1
+)X UNION
+select 'e-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct a)
+from r4
+group by e
+having count(Distinct a) >1
+)X UNION
+select 'e-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct b)
+from r4
+group by e
+having count(Distinct b) >1
+)X UNION
+select 'e-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct c)
+from r4
+group by e
+having count(Distinct c) >1
+)X UNION
+select 'e-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct d)
+from r4
+group by e
+having count(Distinct d) >1
+)X UNION
+select 'a-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct b)
+from r5
+group by a
+having count(Distinct b) >1
+)X UNION
+select 'a-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct c)
+from r5
+group by a
+having count(Distinct c) >1
+)X UNION
+select 'a-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct d)
+from r5
+group by a
+having count(Distinct d) >1
+)X UNION
+select 'a-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select a, count(Distinct e)
+from r5
+group by a
+having count(Distinct e) >1
+)X UNION
+select 'b-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct a)
+from r5
+group by b
+having count(Distinct a) >1
+)X UNION
+select 'b-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct c)
+from r5
+group by b
+having count(Distinct c) >1
+)X UNION
+select 'b-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct d)
+from r5
+group by b
+having count(Distinct d) >1
+)X UNION
+select 'b-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select b, count(Distinct e)
+from r5
+group by b
+having count(Distinct e) >1
+)X UNION
+select 'c-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct a)
+from r5
+group by c
+having count(Distinct a) >1
+)X UNION
+select 'c-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct b)
+from r5
+group by c
+having count(Distinct b) >1
+)X UNION
+select 'c-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct d)
+from r5
+group by c
+having count(Distinct d) >1
+)X UNION
+select 'c-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select c, count(Distinct e)
+from r5
+group by c
+having count(Distinct e) >1
+)X UNION
+select 'd-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct a)
+from r5
+group by d
+having count(Distinct a) >1
+)X UNION
+select 'd-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct b)
+from r5
+group by d
+having count(Distinct b) >1
+)X UNION
+select 'd-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct c)
+from r5
+group by d
+having count(Distinct c) >1
+)X UNION
+select 'd-->e' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select d, count(Distinct e)
+from r5
+group by d
+having count(Distinct e) >1
+)X UNION
+select 'e-->a' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct a)
+from r5
+group by e
+having count(Distinct a) >1
+)X UNION
+select 'e-->b' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct b)
+from r5
+group by e
+having count(Distinct b) >1
+)X UNION
+select 'e-->c' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct c)
+from r5
+group by e
+having count(Distinct c) >1
+)X UNION
+select 'e-->d' as FD, case when count(*) = 0 then 
+'Holds' else 'does not hold' end as validity
+from
+(select e, count(Distinct d)
+from r5
+group by e
+having count(Distinct d) >1
+)X
