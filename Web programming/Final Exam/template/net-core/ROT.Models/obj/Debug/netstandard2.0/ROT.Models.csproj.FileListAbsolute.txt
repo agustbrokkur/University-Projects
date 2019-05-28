@@ -1,9 +1,0 @@
-C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Models\bin\Debug\netstandard2.0\ROT.Models.deps.json
-C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Models\bin\Debug\netstandard2.0\ROT.Models.dll
-C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Models\bin\Debug\netstandard2.0\ROT.Models.pdb
-C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Models\obj\Debug\netstandard2.0\ROT.Models.csprojAssemblyReference.cache
-C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Models\obj\Debug\netstandard2.0\ROT.Models.csproj.CoreCompileInputs.cache
-C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Models\obj\Debug\netstandard2.0\ROT.Models.AssemblyInfoInputs.cache
-C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Models\obj\Debug\netstandard2.0\ROT.Models.AssemblyInfo.cs
-C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Models\obj\Debug\netstandard2.0\ROT.Models.dll
-C:\HR\H18\Vefforritun\Final Exam\template\net-core\ROT.Models\obj\Debug\netstandard2.0\ROT.Models.pdb

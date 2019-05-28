@@ -1,9 +1,0 @@
-C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Models\bin\Debug\netstandard2.0\Exterminator.Models.deps.json
-C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Models\bin\Debug\netstandard2.0\Exterminator.Models.dll
-C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Models\bin\Debug\netstandard2.0\Exterminator.Models.pdb
-C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Models\obj\Debug\netstandard2.0\Exterminator.Models.csprojResolveAssemblyReference.cache
-C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Models\obj\Debug\netstandard2.0\Exterminator.Models.csproj.CoreCompileInputs.cache
-C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Models\obj\Debug\netstandard2.0\Exterminator.Models.AssemblyInfoInputs.cache
-C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Models\obj\Debug\netstandard2.0\Exterminator.Models.AssemblyInfo.cs
-C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Models\obj\Debug\netstandard2.0\Exterminator.Models.dll
-C:\HR\H18\Vefforritun\Class Assignment VI\template\Exterminator.Models\obj\Debug\netstandard2.0\Exterminator.Models.pdb
